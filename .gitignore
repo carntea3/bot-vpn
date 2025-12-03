@@ -1,0 +1,28 @@
+node_modules/
+dist/
+.env
+
+# Configuration (runtime, not in build)
+.vars.json
+
+# Logs
+bot-error.log
+bot-combined.log
+*.log
+
+# Database (runtime, not in build)
+botvpn.db
+*.db
+*.sqlite
+*.sqlite3
+
+# Runtime data directory
+data/
+
+# Temporary files
+*.swp
+*.swo
+.DS_Store
+
+# GitHub copilot instructions
+.github/copilot-instructions.md
