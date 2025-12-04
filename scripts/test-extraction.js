@@ -14,7 +14,7 @@ const vlessMessage = `
 │🏷 *Harga         :* Rp 35,000
 │🗓 *Masa Aktif :* 7 Hari
 │👤 *Username :* \`mboh\`
-│🌐 *Domain     :* \`carntech.biz.id\`
+│🌐 *Domain     :* \`id.alrescha79.qzz.io\`
 │🧾 *UUID         :* \`some-uuid-here\`
 │ ╱ *Path             :* \`/whatever/vless\`
 └─────────────────────
@@ -28,7 +28,7 @@ const vlessMessage = `
 ┌─────────────────────
 │🕒 *Expired :* \`24/12/2025, 09.50\`
 │
-│📥 Save       : https://carntech.biz.id:81/vless-mboh.txt
+│📥 Save       : https://id.alrescha79.qzz.io:81/vless-mboh.txt
 └─────────────────────
 `;
 

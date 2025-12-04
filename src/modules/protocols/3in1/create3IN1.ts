@@ -255,7 +255,7 @@ EOFDATA
 
               const varsPath = path.join(__dirname, '../../../../.vars.json');
               const vars = JSON.parse(fs.readFileSync(varsPath, 'utf8'));
-              const namaStore = vars.NAMA_STORE || 'CARNTECH STORE';
+              const namaStore = vars.NAMA_STORE || 'CARNTECH';
               
               const expDate = new Date();
               expDate.setDate(expDate.getDate() + parseInt(exp));
