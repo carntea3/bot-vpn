@@ -110,7 +110,7 @@ function loadConfig(): Config {
     PORT: vars.PORT || 50123,
 
     // Store Configuration
-    NAMA_STORE: vars.NAMA_STORE || 'CARNTECH Store',
+    NAMA_STORE: vars.NAMA_STORE || 'CARNTECH STORE',
 
     // QRIS Payment Configuration
     DATA_QRIS: vars.DATA_QRIS,
