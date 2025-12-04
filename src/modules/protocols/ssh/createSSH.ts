@@ -108,7 +108,7 @@ echo "SUCCESS"
             
             const varsPath = require('path').join(__dirname, '../../../../.vars.json');
             const vars = JSON.parse(require('fs').readFileSync(varsPath, 'utf8'));
-            const namaStore = vars.NAMA_STORE || 'CARNTECH Store';
+            const namaStore = vars.NAMA_STORE || 'CARNTECH STORE';
             
             const msg = `
          🔥 *SSH PREMIUM ACCOUNT*
