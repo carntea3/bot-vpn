@@ -531,7 +531,7 @@ Untuk melakukan top up, silakan transfer ke rekening berikut:
 📱 *QRIS*
 Scan QR code yang akan digenerate setelah Anda input jumlah.
 
-💰 *Minimal Top Up:* Rp 1.000
+💰 *Minimal Top Up:* Rp 500
 
 Masukkan jumlah top up yang diinginkan:
     `.trim();
