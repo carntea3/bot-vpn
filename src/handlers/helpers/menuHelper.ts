@@ -20,27 +20,12 @@ const vars = config; // Use config module instead of direct require
  */
 async function sendMainMenu(ctx) {
   const userId = ctx.from.id;
-
+  
   try {
     const user = await dbGetAsync('SELECT role, saldo, first_name FROM users WHERE user_id = ?', [userId]);
 
-    // Get user's account count (for personal stats)
     const userData = await dbGetAsync('SELECT COUNT(*) AS total FROM invoice_log WHERE user_id = ?', [userId]);
-    const userAccountCount = userData ? userData.total : 0;
-
-    // Get server statistics (for status display)
-    const serverStats = await dbGetAsync('SELECT COUNT(*) AS total FROM Server');
-    const totalServer = serverStats ? serverStats.total : 0;
-
-    const userStats = await dbGetAsync('SELECT COUNT(*) AS total FROM users');
-    const totalUser = userStats ? userStats.total : 0;
-
-    // Get total accounts created globally (from all invoice_log entries)
-    const accountStats = await dbGetAsync('SELECT COUNT(*) AS total FROM invoice_log');
-    const totalAccountCreated = accountStats ? accountStats.total : 0;
-
-    const resellerStats = await dbGetAsync("SELECT COUNT(*) AS total FROM users WHERE role = 'reseller'");
-    const totalReseller = resellerStats ? resellerStats.total : 0;
+    const totalAccountCreated = userData ? userData.total : 0;
 
     if (!user) {
       return ctx.reply('❌ Anda belum terdaftar. Ketik /start untuk memulai.');
@@ -53,38 +38,17 @@ async function sendMainMenu(ctx) {
       user: '👤'
     }[user.role] || '👤';
 
-
-    const promoText = user.role === 'user' ? `
-💎 🅛🅐🅨🅐🅝🅐🅝 🅟🅡🅔🅜🅘🅤🅜
-══════════════════════════
-✅ SSH & OpenVPN — Support All Operator  
-✅ XRAY — VMess / VLESS (TLS & Non-TLS)  
-✅ TROJAN — WS & GFW (Cepat, Aman, Stabil)
-✅ Support UDP  
-✅ Support Wildcard Host
-══════════════════════════
-🔥 CLOUDFRONT AKUN
-` : '\n';
-
     const welcomeText = `
-𝕊𝕖𝕝𝕒𝕞𝕒𝕥 𝕕𝕒𝕥𝕒𝕟𝕘 *${user.first_name}* 𝕕𝕚 𝔹𝕆𝕋 𝕍ℙℕ *${vars.NAMA_STORE}*!
-${promoText}
+Selamat Datang *${user.first_name}* di BOT VPN *${vars.NAMA_STORE}*!
+
 ╔═════════════════════════╗
-    🗄 🄸🄽🄵🄾 🅂🄴🅁🅅🄴🅁
+                📋 *Informasi Akun*
 ╠═════════════════════════╣
-  \`🔢 Server Tersedia  :\` *${totalServer}*
-  \`👥 Total Pengguna   :\` *${totalUser}*
-  \`📊 Total Akun Dibuat:\` *${totalAccountCreated}*
-╚═════════════════════════╝
-                            ⁺˚⋆｡°✩₊✩°｡⋆˚⁺
-╔═════════════════════════╗
-        👨🏻‍💻 🄸🄽🄵🄾 🄰🄺🅄🄽
-╠═════════════════════════╣
-  \`🛍 Store       :\` *${vars.NAMA_STORE}*
-  \`💰 Saldo       :\` *Rp${user.saldo.toLocaleString('id-ID')}*
-  \`🪪 Role        :\` *${user.role.charAt(0).toUpperCase() + user.role.slice(1)}* ${roleEmoji}
-  \`📜 Akun Dibuat :\` *${userAccountCount}*
-  \`🔒 Admin Bot   :\` *@${vars.ADMIN_USERNAME}*
+      🛍 *Store              : ${vars.NAMA_STORE}*
+      💰 *Saldo              : Rp${user.saldo.toLocaleString('id-ID')}*
+      📊 *Role                : ${user.role.charAt(0).toUpperCase() + user.role.slice(1)}* ${roleEmoji}
+      📜 *Akun Dibuat : ${totalAccountCreated}*
+      🔒 *Admin Bot     : @${vars.ADMIN_USERNAME}*
 ╚═════════════════════════╝
 
 Silakan pilih menu di bawah:
