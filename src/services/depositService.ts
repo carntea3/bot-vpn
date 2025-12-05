@@ -42,7 +42,7 @@ async function handleDepositState(ctx, userId, data) {
       return await ctx.answerCbQuery('⚠️ Jumlah tidak boleh kosong!', { show_alert: true });
     }
     if (parseInt(currentAmount) < 50) {
-      return await ctx.answerCbQuery('⚠️ Jumlah minimal top-up adalah 200 Ya Kawan...!!!', { show_alert: true });
+      return await ctx.answerCbQuery('⚠️ Jumlah minimal top-up adalah 500 Ya Kawan...!!!', { show_alert: true });
     }
     global.depositState[userId].action = 'confirm_amount';
     await processDeposit(ctx, currentAmount);
@@ -94,9 +94,9 @@ async function processDeposit(ctx, amount) {
     logger.info(`Processing deposit: ${amount} for user ${userId}`);
 
     // Validate amount
-    if (numAmount < 100) {
+    if (numAmount < 400) {
       await ctx.editMessageText(
-        '❌ *Jumlah minimal deposit adalah Rp 200*',
+        '❌ *Jumlah minimal deposit adalah Rp 500*',
         {
           parse_mode: 'Markdown',
           reply_markup: {
