@@ -94,7 +94,7 @@ async function processDeposit(ctx, amount) {
     logger.info(`Processing deposit: ${amount} for user ${userId}`);
 
     // Validate amount
-    if (numAmount < 400) {
+    if (numAmount < 100) {
       await ctx.editMessageText(
         '❌ *Jumlah minimal deposit adalah Rp 500*',
         {

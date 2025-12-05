@@ -101,7 +101,7 @@ function loadConfig(): Config {
 
     // Admin Configuration
     USER_ID: vars.USER_ID,
-    ADMIN_USERNAME: vars.ADMIN_USERNAME || 'CARNTECH',
+    ADMIN_USERNAME: vars.ADMIN_USERNAME || 'carntech',
 
     // Group Configuration
     GROUP_ID: vars.GROUP_ID,
@@ -110,7 +110,7 @@ function loadConfig(): Config {
     PORT: vars.PORT || 50123,
 
     // Store Configuration
-    NAMA_STORE: vars.NAMA_STORE || 'CARNTECH STORE',
+    NAMA_STORE: vars.NAMA_STORE || 'Carntech Store',
 
     // QRIS Payment Configuration
     DATA_QRIS: vars.DATA_QRIS,

@@ -39,8 +39,8 @@ async function sendMainMenu(ctx) {
     }[user.role] || '👤';
 
     const welcomeText = `
-Selamat Datang *${user.first_name}* di BOT VPN *${vars.NAMA_STORE}*!
-
+Welcome *${user.first_name}* BOT VPN *${vars.NAMA_STORE}*!
+SSH * VPN * UDP * CLOUDFRONT
 ╔═════════════════════════╗
                 📋 *Informasi Akun*
 ╠═════════════════════════╣
