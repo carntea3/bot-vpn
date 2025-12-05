@@ -57,14 +57,13 @@ async function sendMainMenu(ctx) {
     const promoText = user.role === 'user' ? `
 💎 🅛🅐🅨🅐🅝🅐🅝 🅟🅡🅔🅜🅘🅤🅜
 ══════════════════════════
-✅ SSH & OpenVPN — UDP 
-✅ XRAY — VMess / VLESS (TLS & Non-TLS)
+✅ SSH & OpenVPN — Support All Operator  
+✅ XRAY — VMess / VLESS (TLS & Non-TLS)  
+✅ TROJAN — WS & GFW (Cepat, Aman, Stabil)
+✅ Support UDP  
+✅ Support Wildcard Host
 ══════════════════════════
-
-💎 🅕🅘🅣🅤🅡 🅟🅡🅔🅜🅘🅤🅜
-══════════════════════════
-⚡️ CLOUDFRONT AKUN
-══════════════════════════ 
+🔥 CLOUDFRONT AKUN
 ` : '\n';
 
     const welcomeText = `
@@ -81,6 +80,7 @@ ${promoText}
 ╔═════════════════════════╗
         👨🏻‍💻 🄸🄽🄵🄾 🄰🄺🅄🄽
 ╠═════════════════════════╣
+  \`🛍 Store       :\` *${vars.NAMA_STORE}*
   \`💰 Saldo       :\` *Rp${user.saldo.toLocaleString('id-ID')}*
   \`🪪 Role        :\` *${user.role.charAt(0).toUpperCase() + user.role.slice(1)}* ${roleEmoji}
   \`📜 Akun Dibuat :\` *${userAccountCount}*
