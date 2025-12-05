@@ -57,22 +57,14 @@ async function sendMainMenu(ctx) {
     const promoText = user.role === 'user' ? `
 💎 🅛🅐🅨🅐🅝🅐🅝 🅟🅡🅔🅜🅘🅤🅜
 ══════════════════════════
-✅ SSH & OpenVPN — Support All Operator  
-✅ XRAY — VMess / VLESS (TLS & Non-TLS)  
-✅ TROJAN — WS & GFW (Cepat, Aman, Stabil)
-✅ Support UDP  
-✅ Support Wildcard Host
+✅ SSH & OpenVPN — UDP 
+✅ XRAY — VMess / VLESS (TLS & Non-TLS)
 ══════════════════════════
 
 💎 🅕🅘🅣🅤🅡 🅟🅡🅔🅜🅘🅤🅜
 ══════════════════════════
-⚡️ Full Speed & Ping Rendah  
-📡 Support Bug Host / SNI  
-📆 Masa Aktif Fleksibel  
-🤖 3 in 1 (VMess, VLESS dan Trojan) dalam 1 Akun 
+⚡️ CLOUDFRONT AKUN
 ══════════════════════════ 
-
-🔥 VPN Terbaik untuk Streaming, Gaming, & Browsing!
 ` : '\n';
 
     const welcomeText = `
@@ -84,13 +76,11 @@ ${promoText}
   \`🔢 Server Tersedia  :\` *${totalServer}*
   \`👥 Total Pengguna   :\` *${totalUser}*
   \`📊 Total Akun Dibuat:\` *${totalAccountCreated}*
-  \`👨🏻‍💼 Total Reseller   :\` *${totalReseller}*
 ╚═════════════════════════╝
                             ⁺˚⋆｡°✩₊✩°｡⋆˚⁺
 ╔═════════════════════════╗
         👨🏻‍💻 🄸🄽🄵🄾🅁🄼🄰🅂🄸 🄰🄺🅄🄽
 ╠═════════════════════════╣
-  \`🛍 Store       :\` *${vars.NAMA_STORE}*
   \`💰 Saldo       :\` *Rp${user.saldo.toLocaleString('id-ID')}*
   \`🪪 Role        :\` *${user.role.charAt(0).toUpperCase() + user.role.slice(1)}* ${roleEmoji}
   \`📜 Akun Dibuat :\` *${userAccountCount}*
