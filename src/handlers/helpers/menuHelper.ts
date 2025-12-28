@@ -20,36 +20,36 @@ const vars = config; // Use config module instead of direct require
  */
 async function sendMainMenu(ctx) {
   const userId = ctx.from.id;
+const userName = ctx.from.first_name || '-';
   
   try {
     const user = await dbGetAsync('SELECT role, saldo, first_name FROM users WHERE user_id = ?', [userId]);
-
-    const userData = await dbGetAsync('SELECT COUNT(*) AS total FROM invoice_log WHERE user_id = ?', [userId]);
-    const totalAccountCreated = userData ? userData.total : 0;
-
-    if (!user) {
-      return ctx.reply('❌ Anda belum terdaftar. Ketik /start untuk memulai.');
-    }
-
-    const roleEmoji = {
-      admin: '👑',
-      owner: '👑',
-      reseller: '💼',
-      user: '👤'
-    }[user.role] || '👤';
-
-    const welcomeText = `
+    
+        const userData = await dbGetAsync('SELECT COUNT(*) AS total FROM invoice_log WHERE user_id = ?', [userId]);
+        const totalAccountCreated = userData ? userData.total : 0;
+        if (!user) {
+            return ctx.reply('❌ Anda belum terdaftar. Ketik /start untuk memulai.');
+        }
+        const roleEmoji = {
+            admin: '👑',
+            owner: '👑',
+            reseller: '💼',
+            user: '👤'
+        }[user.role] || '👤';
+        const welcomeText = `
 Selamat Datang *${user.first_name}* di BOT VPN *${vars.NAMA_STORE}*!
 
-╔═════════════════════════╗
+────────────────────────
                 📋 *Informasi Akun*
-╠═════════════════════════╣
-      🛍 *Store              : ${vars.NAMA_STORE}*
-      💰 *Saldo              : Rp${user.saldo.toLocaleString('id-ID')}*
-      📊 *Role                : ${user.role.charAt(0).toUpperCase() + user.role.slice(1)}* ${roleEmoji}
-      📜 *Akun Dibuat : ${totalAccountCreated}*
-      🔒 *Admin Bot     : @${vars.ADMIN_USERNAME}*
-╚═════════════════════════╝
+────────────────────────
+*Name         : ${userName}*
+*ID           : ${userId}*
+*Saldo        : Rp${user.saldo.toLocaleString('id-ID')}*
+*Status       : ${user.role.charAt(0).toUpperCase() + user.role.slice(1)}* ${roleEmoji}
+*Akun Dibuat  : ${totalAccountCreated}*
+
+*Admin Bot    : @${vars.ADMIN_USERNAME}*
+────────────────────────
 
 Silakan pilih menu di bawah:
         `.trim();
