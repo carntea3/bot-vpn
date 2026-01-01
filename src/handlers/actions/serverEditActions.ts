@@ -252,13 +252,20 @@ function registerServerDetailAction(bot) {
  * Register add balance to user action
  */
 function registerAddSaldoUserAction(bot) {
-    bot.action('addsaldo_user', async (ctx) => {
-    try {
-        await ctx.answerCbQuery();
-        userState[ctx.chat.id] = { step: 'request_user_id_for_add_saldo' };
-        await ctx.editMessageText('👤 *Silakan masukkan User ID Telegram yang ingin ditambahkan saldonya (angka):*', { parse_mode: 'Markdown' });
-    } catch (error) { await ctx.reply('❌ *GAGAL! Terjadi kesalahan saat memproses permintaan Anda.*', { parse_mode: 'Markdown' }); }
-});
+  bot.action(/add_saldo_(\d+)/, async (ctx) => {
+    const userId = ctx.match[1];
+
+    logger.info(`Admin ${ctx.from.id} memilih untuk menambahkan saldo user dengan ID: ${userId}`);
+
+    // Set user state
+    if (!global.userState) global.userState = {};
+    global.userState[ctx.chat.id] = { step: 'add_saldo', userId: userId };
+
+    await ctx.reply('📊 *Silakan masukkan jumlah saldo yang ingin ditambahkan:*', {
+      reply_markup: { inline_keyboard: keyboard_nomor() },
+      parse_mode: 'Markdown'
+    });
+  });
 }
 
 /**
